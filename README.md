@@ -1,0 +1,1 @@
+## Advent of Code repo with some automatic setup
