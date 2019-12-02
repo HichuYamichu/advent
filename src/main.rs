@@ -11,6 +11,7 @@ fn main() {
     let day = args[1].parse::<usize>().unwrap();
     match day {
         1 => solutions::day1::index(load_input(day)),
+        2 => solutions::day2::index(load_input(day)),
         _ => setup_day(day),
     };
 }
