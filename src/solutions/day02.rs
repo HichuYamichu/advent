@@ -1,43 +1,31 @@
-use std::fs;
-use std::fs::File;
-use std::io::BufReader;
 use std::str::FromStr;
 
-pub fn index(_f: BufReader<File>) {
-  a();
-  b();
+pub fn a(input: &str) -> String {
+  let res = find(input, 12, 2);
+  res[0].to_string()
 }
 
-fn a() {
-  let res = find(12, 2);
-  println!("solution A: {:?}", res[0])
-}
-
-fn b() {
+pub fn b(input: &str) -> String {
+  let mut sol = 0;
   for i in 0..99 {
     for j in i..99 {
-      let res = find(i, j);
+      let res = find(input, i, j);
       if res[0] == 19690720 {
-        println!("solution B: {}", 100 * res[1] + res[2]);
+        sol = 100 * res[1] + res[2];
       }
     }
   }
+  sol.to_string()
 }
 
-fn find(replace1: usize, replace2: usize) -> Vec<usize> {
-  let foo: String = fs::read_to_string("input/day2.txt")
-    .unwrap()
-    .parse()
-    .unwrap();
-
-  let mut program = foo
+fn find(input: &str, replace1: usize, replace2: usize) -> Vec<usize> {
+  let mut program = input
     .split(",")
     .map(|s| FromStr::from_str(s).unwrap())
     .collect::<Vec<usize>>();
 
   program[1] = replace1;
   program[2] = replace2;
-  
   let mut currnet_position = 0;
   loop {
     if program[currnet_position] == 99 {
