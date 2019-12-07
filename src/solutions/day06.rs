@@ -1,8 +1,8 @@
-pub fn a(_input_string: &str) -> String {
+pub fn a(_input: &str) -> String {
   String::from("")
 }
 
-pub fn b(_input_string: &str) -> String {
+pub fn b(_input: &str) -> String {
   String::from("")
 }
 
